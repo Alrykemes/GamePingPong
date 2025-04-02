@@ -32,7 +32,26 @@ const canvasEl = document.querySelector("canvas"),
       w: lineCenter.w,
       h: 200,
       _move: function() {
-        this.y = mouse.y - this.h / 2
+        //this.y = mouse.y - this.h / 2
+        document.addEventListener('keydown', (event) => {
+          if(event.key === "ArrowUp") {
+            if(this.y <= 0) {
+              console.log(this.y)
+              this.y = 0
+            } else {
+              console.log(this.y)
+              this.y -= .3;
+            }
+          } else if(event.key === "ArrowDown") {
+            if(this.y >= (field.h - this.h)) {
+              console.log(this.y)
+              this.y = (field.h - this.h)
+            } else {
+              console.log(this.y)
+              this.y += .3;
+            }
+          }
+        })
       },
       draw: function() {
       canvasCtx.fillRect(this.x, this.y, this.w, this.h)
